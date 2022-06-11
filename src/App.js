@@ -8,6 +8,7 @@ import { WelcomeModal } from './components/welcomeModal/WelcomeModal';
 
 function App() {
   const [showWelcomeMessage, setshowWelcomeMessage] = useState(false)
+
   useEffect(() => {
       const interval = setInterval(() => {
           setshowWelcomeMessage(true)
@@ -36,6 +37,7 @@ function App() {
         })
         setAllData( filterData )
     }
+
     const filterShopCategory = (category) => {
       const filterData = shops.filter( shop => {
         if(shop.sCategory == category){
@@ -44,6 +46,7 @@ function App() {
       } )
       setAllData(filterData)
     }
+    
     const filterShopArea = (area) => {
         const filterData = shops.filter(shop => {
           if(shop.sArea == area){

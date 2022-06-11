@@ -13,7 +13,6 @@ export const Form = () => {
        const submitForm = (e) => {
            e.preventDefault();
            if(sName && sArea && sCategory && sOpenDate && sCloseDate){
-
                if(sName.match(/[a-zA-Z]/)){
                    dispatch({
                        type: "REGISTER_SHOP",
