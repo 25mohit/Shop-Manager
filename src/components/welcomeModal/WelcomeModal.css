@@ -1,1 +1,77 @@
-/* No CSS *//*# sourceMappingURL=WelcomeModal.css.map */
+.welcome-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  pointer-events: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.welcome-modal .welcome-modal-container {
+  background-color: #ffd6e9;
+  pointer-events: all;
+  width: 600px;
+  padding: 30px;
+  border-radius: 15px;
+}
+
+.welcome-modal .welcome-modal-container .model-close-div {
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.welcome-modal .welcome-modal-container .model-close-div .close-icon {
+  color: gray;
+}
+
+.welcome-modal .welcome-modal-container .model-close-div .close-icon:hover {
+  color: black;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.welcome-modal .welcome-modal-container .welcome-head {
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.welcome-modal .welcome-modal-container .welcome-text-detail {
+  line-height: 30px;
+}
+
+.welcome-modal .welcome-modal-container .got-it-bt {
+  padding: 15px 50px;
+  border-radius: 5px;
+  color: #1970C1;
+  font-size: 18px;
+  font-weight: bold;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-color: transparent;
+  border: 3px solid #1970C1;
+}
+
+.welcome-modal .welcome-modal-container .got-it-bt:hover {
+  cursor: pointer;
+  background-color: #1970C1;
+  color: white;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+/*# sourceMappingURL=WelcomeModal.css.map */

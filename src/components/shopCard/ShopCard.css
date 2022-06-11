@@ -68,17 +68,40 @@
   letter-spacing: 1px;
 }
 
-.shop-card-div .card-info .delete-bt {
+.shop-card-div .card-info .footer-bt-div {
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-right: 10px;
+}
+
+.shop-card-div .card-info .footer-bt-div .edit-text {
+  margin: 0;
+  padding: 0;
+  color: red;
+}
+
+.shop-card-div .card-info .footer-bt-div .edit-text:hover {
+  cursor: pointer;
+}
+
+.shop-card-div .card-info .footer-bt-div .delete-bt {
   background-color: #ff2323;
   border: 1px solid red;
   padding: 10px;
   color: white;
   font-weight: 600;
-  margin-top: 10px;
   letter-spacing: 1px;
 }
 
-.shop-card-div .card-info .delete-bt:hover {
+.shop-card-div .card-info .footer-bt-div .delete-bt:hover {
   cursor: pointer;
   background-color: white;
   color: red;

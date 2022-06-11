@@ -1,10 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './MessageModal.css'
 import { useDispatch  } from 'react-redux/';
 import CancelIcon from '@mui/icons-material/Cancel';
 
-export const MessageModal = ({setDeleteModal, id}) => {
+export const MessageModal = ({setDeleteModal,deleteModal, id}) => {
     const dispatch = useDispatch()
+    useEffect(() => {
+        document.addEventListener('keydown', keyPress)
+        return() => {
+          document.removeEventListener('keydown', keyPress)
+  }
+    },[deleteModal])
+    const keyPress = (e) => {
+      if(e.keyCode==27){
+          setDeleteModal(false)
+      }
+    }
 
     const deleteBt = () => {
         dispatch({

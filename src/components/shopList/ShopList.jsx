@@ -5,7 +5,7 @@ import { ShopCard } from '../shopCard/ShopCard'
 export const ShopList = ({allData}) => {
     // const shops = useSelector(state => state.shops)
 // console.log(allData);
-
+  
   return (
     <div className='shop-list-div'>
             <div className="shop-list-container">

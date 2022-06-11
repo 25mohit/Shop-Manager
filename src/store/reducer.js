@@ -16,6 +16,11 @@ const reducer = (state  = initialState, action) => {
                         ...state,
                         shops: state.shops.filter(name => name.id !== action.payload)
                     }
+                case "EDIT_SHOP_DATA":
+                    return{
+                        ...state,
+                        shops:[action.payload]
+                    }
                     default :
                     return state;
         }

@@ -1,0 +1,53 @@
+.welcome-modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    pointer-events: none;
+    display: flex;
+        .welcome-modal-container{
+                background-color: #ffd6e9;
+                pointer-events: all;
+                width: 600px;
+                padding: 30px;
+                border-radius: 15px;
+                .model-close-div{
+                    justify-content: right;
+                    display: flex;
+                    .close-icon{
+                        color: gray;
+                        &:hover{
+                            color: black;
+                            transition: 0.5s;
+                            cursor: pointer;
+                        }
+                    }
+                }
+                .welcome-head{
+                        font-weight: bold;
+                        font-size: 40px;
+                }
+                .welcome-text-detail{
+                        line-height: 30px;
+                }
+                .got-it-bt{
+                    padding: 15px 50px;
+                    border-radius: 5px;
+                    color: #1970C1;
+                    font-size: 18px;
+                    font-weight: bold;
+                    user-select: none;
+                    background-color: transparent;
+                    border:3px solid #1970C1;
+                    &:hover{
+                        cursor: pointer;
+                        background-color: #1970C1;
+                        color: white;
+                        transition: 0.6s;
+                    }
+                }
+        }
+}

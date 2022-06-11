@@ -3,9 +3,20 @@ import { Filterbar } from './components/filterBar/Filterbar';
 import { Form } from './components/form/Form';
 import { ShopList } from './components/shopList/ShopList';
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { WelcomeModal } from './components/welcomeModal/WelcomeModal';
 
 function App() {
+  const [showWelcomeMessage, setshowWelcomeMessage] = useState(false)
+  useEffect(() => {
+      const interval = setInterval(() => {
+          setshowWelcomeMessage(true)
+        },3000)
+        setTimeout(() => {
+          clearInterval(interval)
+    },3001)
+  },[])
+
   const shops = useSelector(state => state.shops)
   const [allData, setAllData] = useState(shops)
 
@@ -25,6 +36,22 @@ function App() {
         })
         setAllData( filterData )
     }
+    const filterShopCategory = (category) => {
+      const filterData = shops.filter( shop => {
+        if(shop.sCategory == category){
+          return shop;
+        }
+      } )
+      setAllData(filterData)
+    }
+    const filterShopArea = (area) => {
+        const filterData = shops.filter(shop => {
+          if(shop.sArea == area){
+            return shop;
+          }
+        })
+        setAllData( filterData)
+    }
 
   return (
     <div className="App">
@@ -32,10 +59,10 @@ function App() {
             <Form />
       </div>
       <div className='shop-list'>
-            <Filterbar categoryFilter = { filterCategory() } areaFilter={ filterArea() } nameFilter = { filterShopName }/>
+            <Filterbar categoryFilter = { filterCategory() } areaFilter={ filterArea() } nameFilter = { filterShopName } shopAreaFilter = {filterShopArea} shopCategoryFilter = { filterShopCategory }/>
             <ShopList allData={ allData } />         
       </div>
-
+      {showWelcomeMessage &&<WelcomeModal setshowWelcomeMessage={setshowWelcomeMessage} showWelcomeMessage={showWelcomeMessage}/> }
     </div>
   );
 }

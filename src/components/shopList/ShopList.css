@@ -17,4 +17,19 @@
           align-items: center;
   padding-top: 40px;
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: blueviolet;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #7600e3;
+}
 /*# sourceMappingURL=ShopList.css.map */

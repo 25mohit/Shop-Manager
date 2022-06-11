@@ -49,20 +49,35 @@
                 letter-spacing: 1px;
             }
         }
-        .delete-bt{
-            background-color: rgb(255, 35, 35);
-            border: 1px solid red;
-            padding: 10px;
-            color: white;
-            font-weight: 600;
-            margin-top: 10px;
-            letter-spacing: 1px;
-            &:hover{
-                cursor: pointer;
-                background-color: white;
+        .footer-bt-div{
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-right: 10px;
+            .edit-text{
+                margin: 0;
+                padding: 0;
                 color: red;
-                transition: 0.6s;
+                &:hover{
+                    cursor: pointer;
+                }
             }
+            .delete-bt{
+                background-color: rgb(255, 35, 35);
+                border: 1px solid red;
+                padding: 10px;
+                color: white;
+                font-weight: 600;
+                letter-spacing: 1px;
+                &:hover{
+                    cursor: pointer;
+                    background-color: white;
+                    color: red;
+                    transition: 0.6s;
+                }
+            }
+
         }
     }
         

@@ -1,0 +1,28 @@
+.edit-shop{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.3);
+    backdrop-filter: blur(3px);
+    .edit-shop-container{
+        width: 550px;
+        height: 400px;
+        background-color: white;
+        justify-content: center;
+        display: flex;
+        .shop-edit-form{
+            display: flex;
+            flex-direction: column;
+            input[type=text]{
+                padding: 15px;
+                margin: 10px 0;
+                width: 250px;
+            }
+        }
+    }   
+}

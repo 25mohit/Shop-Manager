@@ -10,6 +10,7 @@
     align-items: center;
     justify-content: center;
         .message-container{
+            z-index: 2000;
             background-color: white;
             border-radius: 10px;
             box-shadow: 1px 1px 10px 2px gray;

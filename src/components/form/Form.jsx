@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import './Form.css'
 
@@ -10,20 +10,26 @@ export const Form = () => {
     const [sCloseDate, setSCloseDate] = useState('')
 
    const dispatch = useDispatch()
-    const submitForm = (e) => {
-        e.preventDefault()
-        dispatch({
-            type: "REGISTER_SHOP",
-            payload:{
-                id:(new Date).getTime(),
-                sName, sArea, sCategory, sOpenDate, sCloseDate
+       const submitForm = (e) => {
+           e.preventDefault();
+           if(sName && sArea && sCategory && sOpenDate && sCloseDate){
+
+               if(sName.match(/[a-zA-Z]/)){
+                   dispatch({
+                       type: "REGISTER_SHOP",
+                       payload:{
+                           id:(new Date).getTime(),
+                           sName, sArea, sCategory, sOpenDate, sCloseDate
+                        }
+                    })
+                }else{
+                    alert('Please enter alphabats')
+                }
+            }else{
+                alert('Please select all fields')
             }
-        })
-    }
-    const handleInput = () => {
-        
-    }
-    return(
+        }
+        return(
         <div className="form-div">
             <h1 className="heading">Regiater Shop</h1>
                     <form className="shop-registration-form">
@@ -43,7 +49,7 @@ export const Form = () => {
                             <label htmlFor="categorySelect">Category</label>
                             <select name="" id="" value={ sCategory } onChange={ e => setSCategory(e.target.value)}>
                                     <option value="">Select</option>
-                                    <option value="Grovery">Grovery</option>
+                                    <option value="Grocery">Grocery</option>
                                     <option value="Butcher">Butcher</option>
                                     <option value="Baker">Baker</option>
                                     <option value="Chemist">Chemist</option>
