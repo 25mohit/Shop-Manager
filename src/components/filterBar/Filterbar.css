@@ -1,0 +1,33 @@
+.filterbar-div {
+  padding: 15px;
+  z-index: 1000;
+}
+
+.filterbar-div .container-div-filter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.filterbar-div .container-div-filter .search-text {
+  color: blueviolet;
+  font-weight: 300;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.filterbar-div .container-div-filter input[type=text], .filterbar-div .container-div-filter select, .filterbar-div .container-div-filter input[type=date] {
+  padding: 10px;
+  border: 1px solid #b8b8b8;
+}
+/*# sourceMappingURL=Filterbar.css.map */

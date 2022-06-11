@@ -1,0 +1,53 @@
+.form-div {
+  text-align: left;
+}
+
+.form-div .heading {
+  color: rebeccapurple;
+}
+
+.form-div .shop-registration-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: left;
+  width: 300px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.form-div .shop-registration-form label {
+  color: rebeccapurple;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin: 10px 0;
+}
+
+.form-div .shop-registration-form input[type=text], .form-div .shop-registration-form select, .form-div .shop-registration-form input[type=date] {
+  padding: 10px;
+  border: 1px solid #afafaf;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.form-div .shop-registration-form .submit-bt {
+  background-color: blueviolet;
+  color: white;
+  padding: 15px;
+  font-size: 18px;
+  border: 1px solid blueviolet;
+  border-radius: 3px;
+}
+
+.form-div .shop-registration-form .submit-bt:hover {
+  cursor: pointer;
+  background-color: #7e13e1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+/*# sourceMappingURL=Form.css.map */

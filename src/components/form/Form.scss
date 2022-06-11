@@ -1,0 +1,44 @@
+.form-div{
+    text-align: left;
+    .heading{
+        color: rebeccapurple;
+    }
+    .shop-registration-form{
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        width: 300px;
+        box-sizing: border-box;
+        label{
+            color: rebeccapurple;
+            font-size: 17px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin: 10px 0;
+        }
+        input[type=text],select,input[type=date]{
+            padding: 10px;
+            border: 1px solid rgb(175, 175, 175);
+            border-radius: 5px;
+            // width:250px;
+            // width: 100%;
+            margin-bottom: 15px;
+        }
+        // select{
+        //     width: 270px;
+        // }
+        .submit-bt{
+            background-color: blueviolet;
+            color: white;
+            padding: 15px;
+            font-size: 18px;
+            border: 1px solid blueviolet;
+            border-radius: 3px;
+            &:hover{
+                cursor: pointer;
+                background-color: rgb(126, 19, 225);
+                transition: 0.3s;
+            }
+        }
+    }
+}

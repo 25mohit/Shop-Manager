@@ -1,0 +1,73 @@
+.message-modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(2px);
+    align-items: center;
+    justify-content: center;
+        .message-container{
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 1px 1px 10px 2px gray;
+            padding:15px;
+            width: 350px;
+            position: relative;
+            .message-heading{
+                color: blueviolet;
+                font-size: 35px;
+                // margin: 0;
+                padding: 0;
+            }
+            .bt-container{
+                margin-bottom: 20px;
+                button{
+                    padding: 10px 20px;
+                    margin: 0 10px;
+                    font-size: 16px;
+                    font-weight: bold;
+                    letter-spacing: 2px;
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }
+                .model-delete-be{
+                        border: 1px solid red;
+                        background-color: rgb(255, 41, 41);
+                        color: white;
+                        &:hover{
+                            background-color: rgb(177, 0, 0);
+                            transition: 0.6s;
+                        }
+                }
+                .model-cancel-be{
+                        border: 1px solid green;
+                        background-color: white;
+                        color: green;
+                        &:hover{
+                            background-color: green;
+                            color: white;
+                            transition: 0.6s;
+                        }
+                }
+            }
+            .model-close-bt{
+                font-size: 30px;
+                background-color: white;
+                position: absolute;
+                top: -15px;
+                right: -15px;
+                color: red;
+                border-radius: 50%;
+            }
+            &:hover{
+                cursor: pointer;
+            }
+        }
+        &:hover{
+            cursor: auto;
+    }
+}

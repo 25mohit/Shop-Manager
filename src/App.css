@@ -1,0 +1,19 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+   font-family: 'Montserrat', sans-serif;;
+}
+.App .shop-registration{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex: 1;
+}
+.App .shop-list{
+  justify-content: center;
+  align-items: center;
+  display: list-item;
+  list-style: none;
+  flex: 1.5;
+} 

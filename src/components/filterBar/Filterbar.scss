@@ -1,0 +1,20 @@
+.filterbar-div{
+    padding: 15px;
+    // background-color: rgba(223, 223, 223,0.5);
+    z-index: 1000;
+        .container-div-filter{
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            align-items: center;
+            .search-text{
+                color: blueviolet;
+                font-weight: 300;
+                user-select: none;
+            }
+            input[type=text],select,input[type=date]{
+                padding: 10px;
+                border: 1px solid rgb(184, 184, 184);
+            }
+        }
+}

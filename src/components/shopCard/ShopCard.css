@@ -1,0 +1,88 @@
+.shop-card-div {
+  background-color: white;
+  width: 240px;
+  margin: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-shadow: 1px 1px 10px 1px rgba(164, 164, 164, 0.9);
+          box-shadow: 1px 1px 10px 1px rgba(164, 164, 164, 0.9);
+  display: list-item;
+  list-style: none;
+}
+
+.shop-card-div:hover {
+  cursor: pointer;
+  -webkit-box-shadow: 1px 1px 15px 1px rgba(71, 71, 71, 0.9);
+          box-shadow: 1px 1px 15px 1px rgba(71, 71, 71, 0.9);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.shop-card-div .card-heading {
+  text-align: left;
+  padding: 15px;
+  background-image: linear-gradient(-45deg, #E998D9, #4E8DD4);
+}
+
+.shop-card-div .card-heading .shop-name {
+  margin: 0;
+  color: white;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.shop-card-div .card-image {
+  width: 240px;
+}
+
+.shop-card-div .card-info {
+  padding: 20px;
+  text-align: left;
+}
+
+.shop-card-div .card-info .icon {
+  color: rgba(145, 53, 231, 0.6);
+  font-size: 22px;
+  margin-right: 5px;
+}
+
+.shop-card-div .card-info p {
+  margin: 10px 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 15px;
+}
+
+.shop-card-div .card-info .shop-category {
+  color: #939393;
+  margin-bottom: 20px;
+}
+
+.shop-card-div .card-info .shop-category span {
+  color: #767676;
+  letter-spacing: 1px;
+}
+
+.shop-card-div .card-info .delete-bt {
+  background-color: #ff2323;
+  border: 1px solid red;
+  padding: 10px;
+  color: white;
+  font-weight: 600;
+  margin-top: 10px;
+  letter-spacing: 1px;
+}
+
+.shop-card-div .card-info .delete-bt:hover {
+  cursor: pointer;
+  background-color: white;
+  color: red;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+/*# sourceMappingURL=ShopCard.css.map */
