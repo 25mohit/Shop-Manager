@@ -1,0 +1,134 @@
+diff --git a/src/App.js b/src/App.js
+index 9fa145c..ebbda43 100644
+--- a/src/App.js
++++ b/src/App.js
+@@ -5,7 +5,7 @@ import { ShopList } from './components/shopList/ShopList';
+ import { useSelector } from 'react-redux';
+ import { useEffect, useState } from 'react';
+ import { WelcomeModal } from './components/welcomeModal/WelcomeModal';
+-
++import { useDispatch } from 'react-redux'
+ function App() {
+   const [showWelcomeMessage, setshowWelcomeMessage] = useState(false)
+ 
+@@ -20,6 +20,7 @@ function App() {
+ 
+   const shops = useSelector(state => state.shops)
+   const [allData, setAllData] = useState(shops)
++  const dispatch = useDispatch()
+ 
+   const filterCategory = () => {
+       return[...new Set(shops.map(item => item.sCategory))]
+@@ -30,12 +31,20 @@ function App() {
+     }
+ 
+     const filterShopName = (sName) => {
+-        const filterData = shops.filter( shop => {
+-          if(shop.sName.toLowerCase().includes(sName.toLowerCase())){
+-              return shop
+-          }
++        // const filterData = shops.filter( shop => {
++        //   if(shop.sName.toLowerCase().includes(sName.toLowerCase())){
++        //       return shop
++        //   }
++        // })
++        // setAllData( filterData )
++        console.log(sName, "searching")
++        dispatch({
++          type: "SEARCH",
++          payload:{
++            sName
++            }
+         })
+-        setAllData( filterData )
++        
+     }
+ 
+     const filterShopCategory = (category) => {
+diff --git a/src/components/shopList/ShopList.jsx b/src/components/shopList/ShopList.jsx
+index 4cd2c06..bcbda89 100644
+--- a/src/components/shopList/ShopList.jsx
++++ b/src/components/shopList/ShopList.jsx
+@@ -2,14 +2,13 @@ import './ShopList.css'
+ import { useSelector  } from 'react-redux'
+ import { ShopCard } from '../shopCard/ShopCard'
+ 
+-export const ShopList = ({allData}) => {
+-    // const shops = useSelector(state => state.shops)
+-// console.log(allData);
++export const ShopList = () => {
++  const shops = useSelector(state => state.filteredShops)
+   
+   return (
+     <div className='shop-list-div'>
+             <div className="shop-list-container">
+-            {allData.map(shop => <ShopCard key={ shop.id } data = { shop} />)  }
++            {shops.map(shop => <ShopCard key={ shop.id } data = { shop} />)  }
+             </div>
+             
+     </div>
+diff --git a/src/store/reducer.js b/src/store/reducer.js
+index 7a73c97..10142ad 100644
+--- a/src/store/reducer.js
++++ b/src/store/reducer.js
+@@ -1,25 +1,55 @@
+ import { createStore } from "redux";
+ 
+ const initialState = {
+-    shops:[]
++    shops:[],
++    filteredShops: []
+ }
+ 
+ const reducer = (state  = initialState, action) => {
+         switch(action.type) {
+                 case "REGISTER_SHOP":
+-                    return{
++                    return {
+                         ...state,
+-                        shops: [...state.shops, action.payload]
++                        shops: [...state.shops, action.payload],
++                        // Add logic to add only when new shop satisfy existing filter
++                        filteredShops: [...state.filteredShops, action.payload],
+                     }
+                 case "DELETE_SHOP":
+                     return{
+                         ...state,
+-                        shops: state.shops.filter(name => name.id !== action.payload)
++                        shops: state.shops.filter(name => name.id !== action.payload),
++                        filteredShops: state.filteredShops.filter(name => name.id !== action.payload)
++                    }
++                case "SEARCH":
++                    console.log(state.shops, "total")
++                    console.log(action.payload.sName, "reducer")
++                    // return{
++                    //     ...state,
++                    //     shops: action.payload.filterData
++                    // }
++                    let newState = Object.assign({}, state);
++                    //the value received from our presentational component
++                    let sName = action.payload.sName;
++                    const filteredValues = state.shops.filter( shop => {
++                        if(shop.sName.toLowerCase().includes(sName.toLowerCase())){
++                            return shop
++                        }
++                      })
++                    
++                    //if the value from the input box is not empty
++                    if (sName) {
++                        //change the filtered products to reflect the change
++                        newState.filteredShops = filteredValues;
++                    } else {
++                        newState.filteredShops = newState.shops;
++                        
+                     }
++                    return newState;
+                 case "EDIT_SHOP_DATA":
+                     return{
+                         ...state,
+-                        shops:[action.payload]
++                        shops:[action.payload],
++                        filteredShops:[action.payload]
+                     }
+                     default :
+                     return state;

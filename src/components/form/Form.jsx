@@ -57,7 +57,7 @@ export const Form = () => {
                             <label htmlFor="openDate">Open Date</label>
                             <input type="date" name="openDate" id=""  value={ sOpenDate } onChange={ e => setSOpenDate(e.target.value)}/>
                             <label htmlFor="closeDate">Close Date</label>
-                            <input type="date" name="closeDate" id=""  value={ sCloseDate } onChange={ e => setSCloseDate(e.target.value)}/>
+                            <input type="date" name="closeDate" id=""  min={sOpenDate} value={ sCloseDate } onChange={ e => setSCloseDate(e.target.value)}/>
                             <button className="submit-bt" onClick={ submitForm }>SUBMIT</button>
                     </form>
         </div>

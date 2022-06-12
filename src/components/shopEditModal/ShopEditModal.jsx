@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import './ShopEditModal.css'
+import CancelIcon from '@mui/icons-material/Cancel';
 
 export const ShopEditModal = ({ setShowEditModal , id, allData}) => {
     const [shopName, setShopName] = useState(allData)
@@ -14,7 +15,7 @@ export const ShopEditModal = ({ setShowEditModal , id, allData}) => {
         dispatch({
             type:"EDIT_SHOP_DATA",
             payload:{
-                shopName, shopCategory, shopArea
+                id, shopName, shopCategory, shopArea
             }
         })
         alert('Success')
@@ -25,7 +26,9 @@ export const ShopEditModal = ({ setShowEditModal , id, allData}) => {
     <div className='edit-shop'>
             <div className="edit-shop-container">
                     <form action="" className='shop-edit-form'>
-                    <button onClick={() => {setShowEditModal(false)}}>X</button>
+                        <div className="header-div-shop-modal">
+                                    <CancelIcon onClick={() => {setShowEditModal(false)}} className='edit-model-bt' />
+                        </div>
                     <input type="text" value={shopName.sName} onChange={e=> setShopName( e.target.value)}/>
                     <select name="" id="" value={shopArea} onChange={ e => setShopArea(e.target.value)}>
                         <option value="" disabled>Area</option>

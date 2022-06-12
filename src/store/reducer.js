@@ -21,14 +21,7 @@ const reducer = (state  = initialState, action) => {
                         filteredShops: state.filteredShops.filter(name => name.id !== action.payload)
                     }
                 case "SEARCH":
-                    console.log(state.shops, "total")
-                    console.log(action.payload.sName, "reducer")
-                    // return{
-                    //     ...state,
-                    //     shops: action.payload.filterData
-                    // }
                     let newState = Object.assign({}, state);
-                    //the value received from our presentational component
                     let sName = action.payload.sName;
                     const filteredValues = state.shops.filter( shop => {
                         if(shop.sName.toLowerCase().includes(sName.toLowerCase())){
@@ -44,13 +37,32 @@ const reducer = (state  = initialState, action) => {
                         newState.filteredShops = newState.shops;
                     }
                     return newState;
+                    
+                case "FILTER_BY_AREA":
+                    const filteredArea = shops.sArea == action.payload
+                    state.shops.filter( shop => {
+                        if( filteredArea ){
+                            return shop
+                        }
+                    })
+                    
                 case "EDIT_SHOP_DATA":
-                    return{
-                        ...state,
-                        shops:[action.payload],
-                        filteredShops:[action.payload]
-                    }
-                    default :   
+                    const shopIndex = state.shops.findIndex((shop => shop.id == action.payload.id))
+                    console.log(shopIndex, action.payload)
+                    if (shopIndex >= 0) {
+                        state.shops[shopIndex].sName = action.payload.shopName
+                        state.shops[shopIndex].sArea = action.payload.shopArea
+                        state.shops[shopIndex].sCategory = action.payload.shopCategory
+                        
+                        const filteredShopIndex = state.filteredShops.findIndex((shop => shop.id == action.payload.id))
+                        if (filteredShopIndex >= 0) {
+                            state.filteredShops[filteredShopIndex].sName = action.payload.shopName
+                            state.filteredShops[filteredShopIndex].sArea = action.payload.shopArea
+                            state.filteredShops[filteredShopIndex].sCategory = action.payload.shopCategory
+                        }
+                    } 
+                    return state
+                default :   
                     return state;
         }
 }

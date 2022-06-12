@@ -31,12 +31,6 @@ function App() {
     }
 
     const filterShopName = (sName) => {
-        // const filterData = shops.filter( shop => {
-        //   if(shop.sName.toLowerCase().includes(sName.toLowerCase())){
-        //       return shop
-        //   }
-        // })
-        // setAllData( filterData )
         console.log(sName, "searching")
         dispatch({
           type: "SEARCH",
@@ -57,12 +51,12 @@ function App() {
     }
     
     const filterShopArea = (area) => {
-        const filterData = shops.filter(shop => {
-          if(shop.sArea == area){
-            return shop;
+        dispatch({
+          type:"FILTER_BY_ARE",
+          payload:{
+            area
           }
         })
-        setAllData( filterData)
     }
 
   return (

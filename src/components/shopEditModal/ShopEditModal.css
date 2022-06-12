@@ -25,6 +25,11 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  border-radius: 10px;
+  padding: 40px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -38,11 +43,38 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  width: 100%;
+}
+
+.edit-shop .edit-shop-container .shop-edit-form .header-div-shop-modal {
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.edit-shop .edit-shop-container .shop-edit-form .header-div-shop-modal .edit-model-bt {
+  top: -15px;
+  right: -15px;
+  background-color: white;
+  border-radius: 50%;
+  color: blueviolet;
+  font-size: 30px;
+  border: 1px solid white;
+  position: absolute;
+}
+
+.edit-shop .edit-shop-container .shop-edit-form .header-div-shop-modal .edit-model-bt:hover {
+  background-color: #b10000;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
 }
 
 .edit-shop .edit-shop-container .shop-edit-form input[type=text] {
   padding: 15px;
   margin: 10px 0;
-  width: 250px;
+  width: 70%;
 }
 /*# sourceMappingURL=ShopEditModal.css.map */

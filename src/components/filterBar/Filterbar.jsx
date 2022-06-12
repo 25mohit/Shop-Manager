@@ -33,10 +33,10 @@ export const Filterbar = ({ categoryFilter, areaFilter, nameFilter, shopCategory
         <div className="container-div-filter">
             <h2 className="search-text">Search</h2>
             <input type="text" placeholder='Search for shop...' value = {fields.name} onChange={ handleInput("name") }/>
-            <select name="" id="" onChange={ handleInput("area")}>
+            <select name="" id="" onChange={ handleInput("area")} value={fields.area}>
                 <option value="" disabled>Area</option>
                 {
-                    areaFilter.map(aName => <option key={ aName }>{ aName }</option>)
+                    areaFilter.map(aName => <option key={ aName } value={ aName }>{ aName }</option>)
                 }
             </select>
             <select name="" id="" onChange={ handleInput("category")}>
