@@ -45,8 +45,13 @@ export const Filterbar = ({ categoryFilter, areaFilter, nameFilter, shopCategory
                     categoryFilter.map( cName => <option key={ cName }>{ cName }</option>)
                 }
             </select>
-            <input type="date" />
-            <input type="date" />
+            <select name="" id="">
+                <option value="">Select</option>
+                <option value="open">Open</option>
+                <option value="close">Close</option>
+            </select>
+            {/* <input type="date" />
+            <input type="date" /> */}
         </div>
     </div>
   )
