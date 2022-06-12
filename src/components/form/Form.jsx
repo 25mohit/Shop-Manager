@@ -12,7 +12,7 @@ export const Form = () => {
    const dispatch = useDispatch()
        const submitForm = (e) => {
            e.preventDefault();
-           if(sName && sArea && sCategory && sOpenDate && sCloseDate){
+           if(sName && sArea && sCategory && sOpenDate || sCloseDate){
                if(sName.match(/[a-zA-Z]/)){
                    dispatch({
                        type: "REGISTER_SHOP",
@@ -36,7 +36,7 @@ export const Form = () => {
                             <input type="text" value={ sName } onChange={ e => setSName(e.target.value)} placeholder="Enter shop name" name="shopName"/>
                             <label htmlFor="areaSelect">Area</label>
                             <select name="areaSelect" id="" value={ sArea } onChange={ e => setSArea(e.target.value)}>
-                                    <option value="">Select</option>
+                                    <option value="" disabled>Select</option>
                                     <option value="Thane">Thane</option>
                                     <option value="Pune">Pune</option>
                                     <option value="Mumbai">Mumbai Suburban</option>
@@ -47,7 +47,7 @@ export const Form = () => {
                             </select>
                             <label htmlFor="categorySelect">Category</label>
                             <select name="" id="" value={ sCategory } onChange={ e => setSCategory(e.target.value)}>
-                                    <option value="">Select</option>
+                                    <option value="" disabled>Select</option>
                                     <option value="Grocery">Grocery</option>
                                     <option value="Butcher">Butcher</option>
                                     <option value="Baker">Baker</option>

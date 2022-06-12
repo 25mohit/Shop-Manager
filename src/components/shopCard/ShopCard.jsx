@@ -29,7 +29,6 @@ export const ShopCard = ({ data }) => {
             <div className="footer-bt-div">
                 <button className="delete-bt" onClick={() => {setDeleteModal(true)}}>Delete</button>
                 <p className="edit-text" onClick={() => {setShowEditModal(true)}}>edit</p>
-                {data.id}
             </div>
         </div>
         {showEditModal && <ShopEditModal setShowEditModal={ setShowEditModal } id={data.id} allData={ data }/>}

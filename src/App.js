@@ -5,7 +5,7 @@ import { ShopList } from './components/shopList/ShopList';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { WelcomeModal } from './components/welcomeModal/WelcomeModal';
-
+import { useDispatch } from 'react-redux'
 function App() {
   const [showWelcomeMessage, setshowWelcomeMessage] = useState(false)
 
@@ -20,6 +20,7 @@ function App() {
 
   const shops = useSelector(state => state.shops)
   const [allData, setAllData] = useState(shops)
+  const dispatch = useDispatch()
 
   const filterCategory = () => {
       return[...new Set(shops.map(item => item.sCategory))]
@@ -30,12 +31,20 @@ function App() {
     }
 
     const filterShopName = (sName) => {
-        const filterData = shops.filter( shop => {
-          if(shop.sName.toLowerCase().includes(sName.toLowerCase())){
-              return shop
-          }
+        // const filterData = shops.filter( shop => {
+        //   if(shop.sName.toLowerCase().includes(sName.toLowerCase())){
+        //       return shop
+        //   }
+        // })
+        // setAllData( filterData )
+        console.log(sName, "searching")
+        dispatch({
+          type: "SEARCH",
+          payload:{
+            sName
+            }
         })
-        setAllData( filterData )
+        
     }
 
     const filterShopCategory = (category) => {
