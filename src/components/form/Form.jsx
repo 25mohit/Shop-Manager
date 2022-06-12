@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { AlertModal } from '../alertModal/AlertModal'
 import './Form.css'
 
 export const Form = () => {
@@ -9,11 +10,14 @@ export const Form = () => {
     const [sOpenDate, setSOpenDate] = useState('')
     const [sCloseDate, setSCloseDate] = useState('')
 
+    const [name, setName] = useState(false)
+    const [showAlert, setShowAlert] = useState(false)
+    const [emptyField, setEmptyField] = useState(false)
+
    const dispatch = useDispatch()
        const submitForm = (e) => {
            e.preventDefault();
            if(sName && sArea && sCategory && sOpenDate || sCloseDate){
-               if(sName.match(/[a-zA-Z]/)){
                    dispatch({
                        type: "REGISTER_SHOP",
                        payload:{
@@ -21,11 +25,14 @@ export const Form = () => {
                            sName, sArea, sCategory, sOpenDate, sCloseDate
                         }
                     })
-                }else{
-                    alert('Please enter alphabats')
-                }
+                    setShowAlert(true)
+                    setSName('')
+                    setSArea('')
+                    setSCategory('')
+                    setSOpenDate('')
+                    setSCloseDate('')
             }else{
-                alert('Please select all fields')
+                setEmptyField(true)
             }
         }
         return(
@@ -33,7 +40,8 @@ export const Form = () => {
             <h1 className="heading">Regiater Shop</h1>
                     <form className="shop-registration-form">
                             <label htmlFor="shopName">Shop Name</label>
-                            <input type="text" value={ sName } onChange={ e => setSName(e.target.value)} placeholder="Enter shop name" name="shopName"/>
+                            <input type="text" className='shop-name-field' onBlur={()=>{setName(true)}} focused={name.toString()} value={ sName } pattern='^[A-Za-z\s]{2,50}' onChange={ e => setSName(e.target.value)} placeholder="Enter shop name" name="shopName"/>
+                            <span className="user-name-error"><strong>Please enter only alphabats, and should be more then 2 letters</strong></span>
                             <label htmlFor="areaSelect">Area</label>
                             <select name="areaSelect" id="" value={ sArea } onChange={ e => setSArea(e.target.value)}>
                                     <option value="" disabled>Select</option>
@@ -60,6 +68,8 @@ export const Form = () => {
                             <input type="date" name="closeDate" id=""  min={sOpenDate} value={ sCloseDate } onChange={ e => setSCloseDate(e.target.value)}/>
                             <button className="submit-bt" onClick={ submitForm }>SUBMIT</button>
                     </form>
+                    { showAlert && <AlertModal message = { "Shop successfully added"} setShowAlert={setShowAlert} /> }
+                    { emptyField && <AlertModal message = { "Please fill all fields"} setShowAlert={setEmptyField} /> }
         </div>
     )
 }

@@ -20,6 +20,15 @@
           box-sizing: border-box;
 }
 
+.form-div .shop-registration-form .user-name-error {
+  color: #ff6363;
+  margin-top: 5px;
+  font-weight: 500;
+  padding: 0;
+  font-size: 14px;
+  display: none;
+}
+
 .form-div .shop-registration-form label {
   color: rebeccapurple;
   font-size: 17px;
@@ -49,5 +58,9 @@
   background-color: #7e13e1;
   -webkit-transition: 0.3s;
   transition: 0.3s;
+}
+
+.shop-name-field:invalid[focused="true"] ~ .user-name-error {
+  display: block;
 }
 /*# sourceMappingURL=Form.css.map */

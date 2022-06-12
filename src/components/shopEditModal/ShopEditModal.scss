@@ -10,8 +10,9 @@
     background-color: rgba(0,0,0,0.3);
     backdrop-filter: blur(3px);
     .edit-shop-container{
-        width: 550px;
-        height: 400px;
+        width: fit-content;
+        min-width: 500px;
+        height: fit-content;
         background-color: white;
         justify-content: center;
         border-radius: 10px;
@@ -23,6 +24,7 @@
             display: flex;
             flex-direction: column;
             width: 100%;
+            align-items: center;
             .header-div-shop-modal{
                 justify-content: right;
                 display: flex;
@@ -36,16 +38,46 @@
                         border: 1px solid rgb(255, 255, 255);
                         position: absolute;
                         &:hover{
-                            background-color: rgb(177, 0, 0);
+                            background-color: rgb(255, 255, 255);
+                            color: red;
                             transition: 0.6s;
                         }
+                    }
                 }
-            }
-            input[type=text]{
-                padding: 15px;
-                margin: 10px 0;
-                width: 70%;
-            }
+                input[type=text],select{
+                    padding: 15px;
+                    box-sizing: border-box;
+                    margin: 10px 0;
+                    width: 70%;
+                    border: 1px solid rgb(212, 212, 212);
+                    border-radius: 5px;
+                }
+                button{
+                    padding: 10px 15px;
+                    border: 1px solid blueviolet;
+                    background-color: blueviolet;
+                    font-weight: 500;
+                    color: white;
+                    font-size: 18px;
+                    border-radius: 5px;
+                    margin-top: 20px;
+                    &:hover{
+                        cursor: pointer;
+                        border: 1px solid blueviolet;
+                        color: blueviolet;
+                        background-color: white;
+                        transition: 0.6s;
+                    }
+                }
         }
     }   
+}
+@media screen and (max-width:550px) {
+    .edit-shop{
+        .edit-shop-container{
+            min-width: 85vw;
+            // padding: 10px;
+            box-sizing: border-box;
+        }
+    }
 }

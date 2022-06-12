@@ -31,7 +31,6 @@ function App() {
     }
 
     const filterShopName = (sName) => {
-        console.log(sName, "searching")
         dispatch({
           type: "SEARCH",
           payload:{
@@ -42,22 +41,31 @@ function App() {
     }
 
     const filterShopCategory = (category) => {
-      const filterData = shops.filter( shop => {
-        if(shop.sCategory == category){
-          return shop;
+      dispatch({
+        type:"FILTER_BY_CATEGORY",
+        payload:{
+          category
         }
-      } )
-      setAllData(filterData)
+      })
     }
     
     const filterShopArea = (area) => {
         dispatch({
-          type:"FILTER_BY_ARE",
+          type:"FILTER_BY_AREA",
           payload:{
             area
           }
         })
     }
+
+    const filterShopState = (state) => {
+      dispatch({
+        type:"FILTER_BY_STATE",
+        payload:{
+          state
+        }
+      })
+  }
 
   return (
     <div className="App">
@@ -65,7 +73,7 @@ function App() {
             <Form />
       </div>
       <div className='shop-list'>
-            <Filterbar categoryFilter = { filterCategory() } areaFilter={ filterArea() } nameFilter = { filterShopName } shopAreaFilter = {filterShopArea} shopCategoryFilter = { filterShopCategory }/>
+            <Filterbar categoryFilter = { filterCategory() } areaFilter={ filterArea() } nameFilter = { filterShopName } shopAreaFilter = {filterShopArea} shopCategoryFilter = { filterShopCategory } shopStateFilter= {filterShopState}/>
             <ShopList allData={ allData } />         
       </div>
       {showWelcomeMessage &&<WelcomeModal setshowWelcomeMessage={setshowWelcomeMessage} showWelcomeMessage={showWelcomeMessage}/> }

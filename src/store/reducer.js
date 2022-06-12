@@ -2,10 +2,54 @@ import { createStore } from "redux";
 
 const initialState = {
     shops:[],
-    filteredShops: []
+    filteredShops: [],
+    appliedFilters: {}
+}
+
+const getFilteredShops = (shops, filters) => {
+    let filteredShops = shops
+    for (const [filterName, value] of Object.entries(filters)) {
+        if (filterName === "NAME") {
+            filteredShops = filteredShops.filter( shop => {
+            if(shop.sName.toLowerCase().includes(value.toLowerCase())){
+                return shop
+            }
+            })
+        } else if (filterName === "AREA") {
+            filteredShops = filteredShops.filter( shop => {
+            if(shop.sArea.toLowerCase().includes(value.toLowerCase())){
+                return shop
+            }
+            })
+        } else if (filterName === "CATEGORY") {
+            filteredShops = filteredShops.filter( shop => {
+            if(shop.sCategory.toLowerCase().includes(value.toLowerCase())){
+                return shop
+            }
+            })
+        } else if (filterName === "STATE") {
+            const currentTime = (new Date()).getTime()
+            
+            if (value === "open") {
+                filteredShops = filteredShops.filter( shop => {
+                if(new Date(shop.sOpenDate).getTime() <= currentTime && currentTime <= new Date(shop.sCloseDate).getTime()){
+                    return shop
+                }
+                })
+            } else if (value === "close") {
+                filteredShops = filteredShops.filter( shop => {
+                    if(new Date(shop.sOpenDate).getTime() > currentTime || currentTime > new Date(shop.sCloseDate).getTime()){
+                        return shop
+                    }
+                    })
+            }
+        }
+    }
+    return filteredShops
 }
 
 const reducer = (state  = initialState, action) => {
+    let newState = Object.assign({}, state);
         switch(action.type) {
                 case "REGISTER_SHOP":
                     return {
@@ -21,30 +65,46 @@ const reducer = (state  = initialState, action) => {
                         filteredShops: state.filteredShops.filter(name => name.id !== action.payload)
                     }
                 case "SEARCH":
-                    let newState = Object.assign({}, state);
+                    //the value received from our presentational component
                     let sName = action.payload.sName;
-                    const filteredValues = state.shops.filter( shop => {
-                        if(shop.sName.toLowerCase().includes(sName.toLowerCase())){
-                            return shop
-                        }
-                      })
-                    
-                    //if the value from the input box is not empty
                     if (sName) {
-                        //change the filtered products to reflect the change
-                        newState.filteredShops = filteredValues;
+                        state.appliedFilters.NAME = sName
                     } else {
-                        newState.filteredShops = newState.shops;
+                        delete state.appliedFilters.NAME
                     }
+                    newState.filteredShops = getFilteredShops(state.shops, state.appliedFilters)
                     return newState;
-                    
+    
                 case "FILTER_BY_AREA":
-                    const filteredArea = shops.sArea == action.payload
-                    state.shops.filter( shop => {
-                        if( filteredArea ){
-                            return shop
-                        }
-                    })
+                    let sArea = action.payload.area;
+                    if (sArea) {
+                        state.appliedFilters.AREA = sArea
+                    }else {
+                        delete state.appliedFilters.AREA
+                    }
+                    newState.filteredShops = getFilteredShops(state.shops, state.appliedFilters)
+                    return newState;
+
+                case "FILTER_BY_CATEGORY":
+                    let sCategory = action.payload.category;
+                    if (sCategory) {
+                        state.appliedFilters.CATEGORY = sCategory
+                    }else {
+                        delete state.appliedFilters.CATEGORY
+                    }
+                    newState.filteredShops = getFilteredShops(state.shops, state.appliedFilters)
+                    return newState;
+
+                    case "FILTER_BY_STATE":
+                    let sState = action.payload.state;
+                    if (sState) {
+                        state.appliedFilters.STATE = sState
+                    }else {
+                        delete state.appliedFilters.STATE
+                    }
+                    newState.filteredShops = getFilteredShops(state.shops, state.appliedFilters)
+                    return newState;
+            
                     
                 case "EDIT_SHOP_DATA":
                     const shopIndex = state.shops.findIndex((shop => shop.id == action.payload.id))
