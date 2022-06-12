@@ -5,7 +5,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import { AlertModal } from '../alertModal/AlertModal';
 
 export const ShopEditModal = ({ setShowEditModal , id, allData}) => {
-    const [shopName, setShopName] = useState(allData)
+    const [shopName, setShopName] = useState(allData.sName)
     const [shopCategory, setShopCategory] = useState(allData.sCategory)
     const [shopArea, setShopArea] = useState(allData.sArea)
     const [showAlert, setShowAlert] = useState(false)
