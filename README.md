@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# This Project is Live, you can check it out.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+https://shop-list-erp.herokuapp.com/
 
 ## Available Scripts
 
