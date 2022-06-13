@@ -17,7 +17,7 @@ export const Form = () => {
    const dispatch = useDispatch()
        const submitForm = (e) => {
            e.preventDefault();
-           if(sName && sArea && sCategory && sOpenDate || sCloseDate){
+           if(sName && sArea && sCategory && sOpenDate && sCloseDate){
                    dispatch({
                        type: "REGISTER_SHOP",
                        payload:{
@@ -63,7 +63,7 @@ export const Form = () => {
                                     <option value="Stationery">Stationery shop</option>
                             </select>
                             <label htmlFor="openDate">Open Date</label>
-                            <input type="date" name="openDate" id=""  value={ sOpenDate } onChange={ e => setSOpenDate(e.target.value)}/>
+                            <input type="date" name="openDate" id="" max={sCloseDate } value={ sOpenDate } onChange={ e => setSOpenDate(e.target.value)}/>
                             <label htmlFor="closeDate">Close Date</label>
                             <input type="date" name="closeDate" id=""  min={sOpenDate} value={ sCloseDate } onChange={ e => setSCloseDate(e.target.value)}/>
                             <button className="submit-bt" onClick={ submitForm }>SUBMIT</button>

@@ -108,7 +108,7 @@ const reducer = (state  = initialState, action) => {
                     
                 case "EDIT_SHOP_DATA":
                     const shopIndex = state.shops.findIndex((shop => shop.id == action.payload.id))
-                    console.log(shopIndex, action.payload)
+                    // console.log(shopIndex, action.payload)
                     if (shopIndex >= 0) {
                         state.shops[shopIndex].sName = action.payload.shopName
                         state.shops[shopIndex].sArea = action.payload.shopArea
